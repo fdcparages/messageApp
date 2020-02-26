@@ -121,6 +121,6 @@ nav .comp-name{font-family: 'Merriweather', serif; color: white !important; font
 	.msg-txt.error-msg{float: right; text-align: right;}
 	.msg-txt.error-msg p{color: #d00d0d; border: 1px solid;}
 	.message-details-footer {margin-top: 20px; margin-bottom: 50px; }
-	.message-details-footer form textarea{width: 90%;  display: inline-block;  vertical-align: top;}
+	.message-details-footer form textarea{width: 90%;  display: inline-block;  vertical-align: top; min-height: 70px;}
 	.message-details-footer form button{line-height: 65px; display: inline-block; vertical-align: top; width: 94px; border: 0px aliceblue; background: #3f3e61; color: white; border-radius: 5px;}
 	#see-older-msg{position: absolute; left: 0; right: 0; top: 15px; margin: 0 auto;}
