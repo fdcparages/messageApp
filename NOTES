@@ -1,0 +1,52 @@
+message_status
+    - id
+    - message_id
+    - user_id
+    - status(0 deleted, 1 active)
+    - created
+
+
+public function viewMessageDetails($recipient, $convocode) {
+		$messages = $this->query(
+			// "select msg.* FROM
+			// (
+			// 	select *
+			// 	from messages
+			// 	WHERE (to_id = $recipient AND from_id = $this->userId) OR (to_id = $this->userId AND from_id = $recipient)
+			// 	order by id DESC LIMIT 10
+
+			// ) msg LEFT JOIN message_status ON message_status.message_id = msg.id WHERE message_status.user_id = $this->userId
+			// order by msg.id ASC
+			// "
+MESSAGE MNODEL
+// $counter = 0;
+		// foreach ($messages as $message) {
+		// 	$msg = $message["msg"];
+		// 	if ($msg["from_id"] == $recipient) {
+		// 		$output .= '
+		// 			<div class="msg-txt from-msg" id="'.$msg["id"].'">
+		// 				<p>'.$msg["content"].'<span id="delete-single-msg" data-msgid="'.$msg["id"].'"><i class="fa fa-trash"></i></span></p>
+		// 			</div>
+		// 		';
+		// 	} else {
+		// 		$output .= '
+		// 			<div class="msg-txt to-msg" id="'.$msg["id"].'">
+		// 				<p><span id="delete-single-msg" data-msgid="'.$msg["id"].'"><i class="fa fa-trash"></i></span>'.$msg["content"].'</p>
+		// 			</div>
+		// 		';
+		// 	}
+
+		// 	if ($counter == 0 && count($messages) >= 10) {
+		// 		$output .= '<button class="btn btn-primary" id="see-older-msg" data-msgid="'.$msg["id"].'">See older message</button>';
+		// 	}
+		// 	$counter = $counter + 1;
+		// }
+
+
+
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/fdcparages/messageApp.git
+git push -u origin master

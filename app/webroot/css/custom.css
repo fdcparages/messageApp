@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i,900,900i|Raleway&display=swap');
+
+* {
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-kerning: auto;
+}
+html {
+	font-size: 10pt;
+	line-height: 1.4;
+	font-weight: 400;
+	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-text-size-adjust: 100%;
+}
+body {
+	margin: 0; font-family: 'Raleway', sans-serif;
+}
+/*
+*, *:before, *:after {
+	box-sizing: inherit;
+} */
+.wrapper{ width: 1000px; max-width: 100%; margin: 0 auto;}
+
+#flashMessage{ border: 1px solid;padding: 10px; border-radius: 5px; margin-bottom: 10px;}
+#flashMessage.error{color: #e12d2d;}
+#flashMessage.success{color: #069906;}
+
+#register {width: 600px; max-width: 100%; margin: 50px auto; padding: 20px; }
+
+	#register #reg-msg-errors ol{padding-left: 12px; list-style: disc; color: #e12d2d;}
+	#register h2{color: white;  margin-top: 120px;  text-align: center;font-family: 'Merriweather', serif;line-height: 34px;}
+	#register .reg-left-con, #register .reg-right-con{ display: inline-block; vertical-align: top; min-height: 450px;}
+	#register .reg-left-con{width: 192px; max-width: 100%;display: inline-block;background: #3f3e61;  margin-right: -4px;}
+	#register .reg-right-con{width: 360px;padding: 10px 20px;}
+	#register .reg-right-con h3{ margin-bottom: 25px; }
+	#register .btn-login{float: right;}
+	.error-messages ul { padding-left: 0px; }
+	.error-messages ul li { border: 1px solid; list-style: none; color: red; margin: 5px 0px; padding: 5px; border-radius: 6px; }
+	#register .form-group.error .error-message{padding: 5px; border: 1px solid; margin: 5px 0px; border-radius: 6px; color: #d91414; display: none;}
+
+
+#thank-you{border: 1px solid; max-width: 100%; width: 500px; margin: 134px auto; padding: 10px; text-align: center; border-radius: 5px; color: #3f3e61;}
+	#thank-you p{font-size: 23px; font-family: 'Merriweather', serif;}
+	#thank-you a{display: block; width: 200px; padding: 10px 10px; max-width: 100%; margin: 0 auto; border-radius: 5px; background: #3f5ca1; color: white;}
+
+#login{width: 400px; max-width: 100%; margin: 100px auto; padding: 20px;}
+	#login .log-head{min-height: 80px; border: 1px solid; line-height: 100%; background: #3f3e61;}
+	#login .log-head h2{line-height: 80px; text-align: center; font-family: 'Merriweather', serif; font-weight: bold; color: white;}
+	#login .log-body{ padding-top: 20px; }
+	#login .btn-reg{float: right;}
+
+nav.bg-dark{background-color: #3f3e61 !important;}
+nav .comp-name{font-family: 'Merriweather', serif; color: white !important; font-size: 16px;}
+
+#profile {width: 700px; max-width: 100%; margin: 150px auto; margin-top: 60px; margin-right: auto; margin-bottom: 150px; margin-left: auto; position: relative;}
+	#profile .profile-head{color: #3f3e77; border: 1px solid; padding: 10px 0px 10px 10px; border-radius: 2px;}
+	#profile .profile-head a{position: absolute; right: 10px; top: 13px; color: white; padding: 5px 10px; background: #3f3e77; border-radius: 5px;}
+	#profile .profile-con{font-size: 0;}
+	#profile .profile-img-con, #profile .profile-details-con{display: inline-block; vertical-align: top;min-height: 410px;}
+	#profile .profile-img-con{width: 200px;}
+	.profile-img-con figure{margin-top: 34px;}
+	.profile-img-con figure img{width: 100%;}
+	.profile-img-con button{font-size: 17px; border: 0; margin: 0 auto; display: block; padding: 4px 10px; border-radius: 5px; background: #3f3e61; color: white;}
+	#profile .profile-details-con{width: 498px;padding: 34px 10px 0px 15px; position: relative; padding-bottom: 80px; font-size: 17px;}
+	.profile-details-con h2 { font-size: 22px; font-weight:profile bold; padding: 10px; padding-left: 10px; display: block; color: #3f3e61; padding-left: 0px; }
+	.profile-details-con p{font-size: 15px;}
+	.profile-details-con span{font-weight: bold; font-size: inherit;}
+	.profile-details-con .hubby span{ font-size: 17px; }
+	.dummy-div{min-height: 50px; background: #3f3e77; display: block; position: absolute; width: 100%; bottom: 0;}
+	.upt-profile-con label{ font-size: 17px; }
+	.upt-profile-con .radio{display: inline-block;  vertical-align: top;  margin: 0px 11px;}
+
+	.custom-file-input { color: transparent; opacity: 1; font-size: 17px; }
+	  .custom-file-input::-webkit-file-upload-button { visibility: hidden;  }
+	  .custom-file-input::before { content: 'Select some files'; color: black; display: inline-block; background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); border: 1px solid #999; border-radius: 3px; padding: 5px 8px; outline: none; white-space: nowrap; -webkit-user-select: none; cursor: pointer; text-shadow: 1px 1px #fff; font-weight: 700; font-size: 10pt; }
+	  .custom-file-input:hover::before { border-color: black; }
+	  .custom-file-input:active { outline: 0; }
+	  .custom-file-input:active::before { background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); }
+
+#messages{width: 100%; min-height: 570px; margin: 70px auto;}
+	.messages-head{ border-bottom: 2px solid #3f3e61; min-height: 50px; line-height: 50px; box-shadow: 0 8px 6px -8px #3f3e61; position: relative;}
+	.messages-head h2{color: #3f3e61; font-weight: 700;line-height: 50px; }
+	.messages-head a{position: absolute; right: 10px; top: 0px;}
+	.messages-con{min-height: 470px;padding-top: 20px;}
+		.msg-con { height:72px;position: relative; padding: 10px 10px 10px 100px; box-shadow: 0 8px 6px -10px #3f3e61;}
+		.msg-con figure{}
+		.msg-con img{width: 50px; border-radius: 50%; left: 20px; position: absolute; height: 50px;}
+		.msg-con h3 { font-size: 18px; font-weight: 600; }
+		.msg-con p{}
+		.msg-options{position: absolute; right: 15px; top: 16px;}
+		.msg-content{text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 650px; max-width: 100%;}
+	.messages-footer{}
+	#messages #show-more{display: block; margin: 15px auto;}
+
+#create-msg{margin: 100px auto;}
+	#msg-form label{ text-align: right; }
+	.create-msg-con{ padding-top: 40px; }
+
+#message-details { margin: 69px auto; height: 400px; }
+	.message-details-head { border-bottom: 2px solid #3f3e61; min-height: 50px; line-height: 50px; box-shadow: 0 8px 6px -8px #3f3e61; position: relative; padding-left: 60px;}
+	.message-details-head img { position: absolute; left: 0; width: 50px; height: 50px; border-radius: 50%; top: 3px; }
+	.message-details-head h2{line-height: 50px;}
+	.message-details-con { padding-top: 40px; height: 400px; overflow-y: scroll; position: relative;}
+	.msg-txt { width: 486px; max-width: 100%; text-align: left; margin: 10px 10px; border-radius: 21px; }
+	.messages-search{padding: 10px 0px;margin-bottom: 30px;}
+	.messages-search .search-container{width: 270px; float: right; margin-top: 15px;}
+	.messages-search .search-container input{display: inline-block; vertical-align: top;}
+	.messages-search .search-container button{vertical-align: top; display: inline-block; line-height: 32px; border-radius: 2px; border: 0px; color: white; background: #38366a;}
+	.msg-txt.from-msg{float: left; text-align: left;}
+	.msg-txt.to-msg{float: right; text-align: right;}
+	.msg-txt p{display: inline-block; padding: 10px 15px; border-radius: 21px;}
+	 .msg-txt.from-msg p{background: #3c3a79; color: white; position: relative;}
+	.msg-txt.from-msg p span { position: absolute; right: -22px; opacity: 0; color: #ca2424; width: 19px; text-align: center; font-size: 16px; top: 8px; cursor: pointer; }
+	.msg-txt.from-msg p:hover > span { opacity: 1; }
+
+	.msg-txt.to-msg p{background: #ececec; position: relative;}
+	.msg-txt.to-msg p span { position: absolute; left: -22px; opacity: 0; color: #ca2424; width: 19px; text-align: center; font-size: 16px; top: 8px; cursor: pointer; }
+	.msg-txt.to-msg p:hover > span { opacity: 1; }
+	.msg-txt.error-msg{float: right; text-align: right;}
+	.msg-txt.error-msg p{color: #d00d0d; border: 1px solid;}
+	.message-details-footer {margin-top: 20px; margin-bottom: 50px; }
+	.message-details-footer form textarea{width: 90%;  display: inline-block;  vertical-align: top;}
+	.message-details-footer form button{line-height: 65px; display: inline-block; vertical-align: top; width: 94px; border: 0px aliceblue; background: #3f3e61; color: white; border-radius: 5px;}
+	#see-older-msg{position: absolute; left: 0; right: 0; top: 15px; margin: 0 auto;}
