@@ -43,9 +43,33 @@ class User extends AppModel {
 		'password_confirmation' => array(
             'required' => array(
                 'rule' => 'notBlank',
-                'message' => 'A password is required'
+                'message' => 'Password confirmation is required'
             )
-        )
+		),
+		'birthdate' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Birthdate is required'
+            )
+		),
+		'gender' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Gender is required'
+            )
+		),
+		'age' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Age is required'
+            )
+		),
+		'hubby' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Hubby is required'
+            )
+		),
 	);
 
 	public function __construct()

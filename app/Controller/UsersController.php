@@ -74,47 +74,59 @@ class UsersController extends AppController {
 	// UPDATE PROFILE
 	public function updateProfile() {
 		$this->loadModel('Users');
-
+		$errors = null;
 		if (isset($this->request->data) && $this->request->data) {
+			$userData = $this->request->data;
 
+			//CHECK IF EMAIL VALUE IS NOT CHANGE
+			if ($userData["email"] == $this->Auth->user('email')){
+				unset($userData["email"]);
+			}
+
+			//CHECK IF PASSWORD AND PASSWORD CONFIRMATION IS NULL VALUE
+			if ($userData["password"] == null && $userData["password_confirmation"] == null){
+				unset($userData["password"]);
+				unset($userData["password_confirmation"]);
+			}
+
+			//UPLOAD PHOTO
 			$uploadResponse = array();
 			if($_FILES['upt_profile_image']['error'] == 0) {
 				$uploadResponse = $this->doUploadProfile($_FILES["upt_profile_image"]);
-		  	}
-			$userData = $this->request->data;
-			$checkEmailExist = null;
-			if ($userData["email"] == $this->Auth->user('email')) {
-				unset($userData["email"]);
-			} else {
-				$checkEmailExist = $this->Users->find('all', array(
-					'conditions' => array('Users.email' => $userData["email"])
-				));
+				if ($uploadResponse["sts_code"] == 203) {
+					$errors = 1;
+				}
 			}
-			if (strlen($userData["name"]) < 5 || strlen($userData["name"]) > 20) {
-				$this->Flash->error(__('Name is required and should 5-20 Characters'));
-			} else if($checkEmailExist != null) {
-				$this->Flash->error(__('Email is already exist'));
-			} else if ($uploadResponse != null && $uploadResponse["sts_code"] == 203) {
-				$this->Flash->error(__($uploadResponse["msg"]));
-			} else {
-				if ($userData["password"] == null) {
-					unset($userData["password"]);
-				} else {
+
+			//DO VALIDATION FORM
+			$this->User->set($userData);
+			if ($this->User->validates() && $errors == null) {
+				if (isset($userData["password"])){
 					$userData["password"] = AuthComponent::password($userData["password"]);
 				}
-				$userData["modified_ip"] = $this->request->clientIp();
-				$userData["modified"] = date('Y-m-d H:i:s');
-				if ($uploadResponse != null){
+				if ($uploadResponse != null && $uploadResponse["sts_code"] == 201){
 					$userData["profile_image"] = $uploadResponse["profile_image"];
 				}
+				//UPDATE USER DATA TO DATABASE
 				$this->Users->read(null, $this->Auth->user('id'));
 				$this->Users->set($userData);
 				$this->Users->save();
+
 				$authUser = $this->User->findById($this->Auth->user('id'))["User"];
 				$this->Auth->login($authUser);
 				return $this->redirect(array('controller' => 'Users', 'action' => 'profile'));
-			}
 
+			} else {
+				$errors = "<ul>";
+				if ($uploadResponse != null && $uploadResponse["sts_code"] == 203) {
+					$errors .= '<li>'.$uploadResponse["msg"].'</li>';
+				}
+				foreach ($this->User->validationErrors as $err ){
+					$errors .= '<li>'.$err[0].'</li>';
+				}
+				$errors .= "</ul>";
+				$this->set("errors", $errors);
+			}
 		}
 	}
 
@@ -128,10 +140,12 @@ class UsersController extends AppController {
         $profTxt = substr(strrchr($profName, "."), 1);
 		$profPathCheck = "profile-img/".$profName;
 
+		//CHECK FILE IS EXIST AND RENAME IF ITS EXIST
 		if (file_exists($profPathCheck)) {
 			$profName = time().'-'.rand().'-'.$profName;
 		}
 
+		//CHECK FILE EXTENSION AND UPLOAD IF VALID
 		$profPath = "profile-img/".$profName;
 		if(in_array($profTxt, $allowExtension)){
 			if (move_uploaded_file($profTmp, WWW_ROOT.$profPath)){
