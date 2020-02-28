@@ -6,7 +6,6 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class UsersController extends AppController {
 
-
 	public $components = array('RequestHandler');
 
 	public function __construct($request = null, $response = null) {
@@ -59,6 +58,8 @@ class UsersController extends AppController {
 			}
 		}
 		echo $output;
+		$this->render('/Layouts/ajax');
+
 	}
 
 	//THANK YOU PAGE

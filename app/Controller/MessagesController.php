@@ -47,6 +47,7 @@ class MessagesController extends AppController{
 			}
 		}
 		echo $messagesList;
+		$this->render('/Layouts/ajax');
 	}
 
 	// MESSAGE DETAILS
@@ -69,7 +70,9 @@ class MessagesController extends AppController{
 			$dataReq = $this->request->data;
 			$response = $this->Message->viewMessageDetailsPaginate($dataReq);
 			echo $response;
+			$this->render('/Layouts/ajax');
 		}
+
 	}
 
 	//REPLY MESSAGE
@@ -87,6 +90,7 @@ class MessagesController extends AppController{
 				$response = $this->Message->replyMessage($replyContent);
 			}
 		}
+		$this->render('/Layouts/ajax');
 	}
 
 	// DELETE CONVERSATION
@@ -95,6 +99,7 @@ class MessagesController extends AppController{
 			$convocode = $this->request->data("convocode");
 			$response = $this->MessageStatus->deleteConversationMessageStatus($convocode);
 		}
+		$this->render('/Layouts/ajax');
 	}
 
 	//DELETE SINGLE MESSAGE
@@ -103,6 +108,7 @@ class MessagesController extends AppController{
 			$msgid = $this->request->data("msgid");
 			$response = $this->MessageStatus->deleteSingleMessageStatus($msgid);
 		}
+		$this->render('/Layouts/ajax');
 	}
 
 	//DASHBOARD SEARCH MESSAFGE BY RECIPIENT
@@ -112,6 +118,7 @@ class MessagesController extends AppController{
 			$response = $this->Message->searchMessage($searchValue);
 			echo $response;
 		}
+		$this->render('/Layouts/ajax');
 	}
 
 
