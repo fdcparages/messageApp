@@ -21,6 +21,9 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
+				$userData["last_login_time"] = date('Y-m-d H:i:s');
+				$this->User->id = $this->Auth->user('id');
+				$this->User->save($userData);
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error(__('Invalid username or password, try again'));
@@ -108,6 +111,8 @@ class UsersController extends AppController {
 				if ($uploadResponse != null && $uploadResponse["sts_code"] == 201){
 					$userData["profile_image"] = $uploadResponse["profile_image"];
 				}
+				$userData["modified_ip"] = $this->request->clientIp();
+				$userData["modified"] = date('Y-m-d H:i:s');
 				//UPDATE USER DATA TO DATABASE
 				$this->Users->read(null, $this->Auth->user('id'));
 				$this->Users->set($userData);
